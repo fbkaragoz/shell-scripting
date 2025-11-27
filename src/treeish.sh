@@ -56,7 +56,7 @@ treeish_gitignore() {
 	(
 		cd "$dir" || { echo "Cannot cd into '$dir'" >&2; exit 1; }
 
-		if ! git rev-parse --llis-inside-work-tree >/dev/null 2>&1; then
+		if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 			echo "Error: --gitignore mode requires being inside a git repo." >&2
 			exit 1
 		fi
