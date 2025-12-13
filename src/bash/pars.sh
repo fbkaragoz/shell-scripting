@@ -52,11 +52,6 @@ print "Saved: $out_path\nIndexed: $jsonl_path\n";
 
 END_PERL
 
-if [ $? -eq 0 ]; then
-	echo "Logs saved succesfully."
-	rm $TEMP_LOG || exit 1
-else
-	echo "Error: Failed to process log."
-	exit 1
-fi
 
+echo "Logs saved succesfully."
+rm -f "$TEMP_LOGS"
