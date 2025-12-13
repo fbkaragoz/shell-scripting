@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mypath = "pwd"
+mypath="pwd"
 
 echo $mypath
 
