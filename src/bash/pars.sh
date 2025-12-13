@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 set -euo pipefail
 
@@ -16,7 +16,7 @@ perl - "$TEMP_LOG" "$FINAL_LOG_DIR" "$SESSION_JSON" << 'END_PERL'
 use strict;
 use warnings;
 use POSIX qw(strftime);
-use JSON::PP(encode_json);
+use JSON::PP qw(encode_json);
 
 my ($raw_file, $out_dir, $jsonl_path) = @ARGV; 
 
@@ -37,14 +37,14 @@ print {$out} $content;
 close $out;
 
 my %rec = (
-	timestampt => $ts,
+	timestamp => $ts,
 	host => $host,
 	raw_file => $raw_file,
-	log_file => $log_file,
-	bytes => $length($content),
+	log_file => $out_path,
+	bytes => length($content),
 );
 
-open my $jfh '>>', $jsonl_path or die "Could not append $jsonl_path: $!";
+open(my $jfh, '>>', $jsonl_path) or die "Could not append $jsonl_path: $!";
 print {$jfh} encode_json(\%rec), "\n";
 close $jfh;
 
@@ -54,4 +54,4 @@ END_PERL
 
 
 echo "Logs saved succesfully."
-rm -f "$TEMP_LOGS"
+rm -f "$TEMP_LOG"
