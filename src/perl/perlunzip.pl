@@ -1,5 +1,16 @@
 #!/usr/bin/env perl
 
+=pod
+Simple perl script to unzip one or more zip
+files into a destionation directory.
+
+Usage: $0 <zipfile1> [zipfile2...] <destination_dir>
+=cut
+
+
+
+
+
 use strict;
 use warnings;
 
