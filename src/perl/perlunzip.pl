@@ -6,7 +6,7 @@ use warnings;
 my $num_args =  @ARGV;
 
 if ($num_args < 2) {
-	die "Error: you must provide at least one ZIP file path and a destination path" .
+	die "Error: you must provide at least one ZIP file path and a destination path\n";
 	"Usage: $0 <zipfile1> [zipfile2...] <destination_dir>\n";
 }
 
